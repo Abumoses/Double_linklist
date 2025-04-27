@@ -1,0 +1,37 @@
+include<stdio.h>
+
+typedef struct employees{
+    int salary;
+    struct employees *left;
+    struct employees *right;
+
+}employees;
+
+struct employees *head=NULL;
+
+void create(){
+    employees *h;
+    h=(employees*)malloc(sizeof(employees));
+    printf("Enter Employees Salary: ");
+    scanf("%d",&h->salary);
+    h->left=NULL;
+    h->right=NULL;
+    
+    if(head == NULL)
+        head = h;
+    else{
+        employees *tmp;
+        tmp = head;
+        while(h->right!=NULL)
+            h=h->right;
+        h->right=h;
+        h->left =tmp;
+    }
+    printf("\n");
+}
+
+
+int main(){
+    create();
+
+}
